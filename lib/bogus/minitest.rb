@@ -4,13 +4,13 @@ require 'bogus'
 module MiniTest::Assertions
   def assert_received(subject, method, args, message = nil)
     with_bogus_matcher_for(subject, method, args) do |matcher, result|
-      assert(result, message || matcher.failure_message_for_should)
+      assert(result, message || matcher.failure_message)
     end
   end
 
   def refute_received(subject, method, args, message = nil)
     with_bogus_matcher_for(subject, method, args) do |matcher, result|
-      refute(result, message || matcher.failure_message_for_should_not)
+      refute(result, message || matcher.failure_message_when_negated)
     end
   end
 
